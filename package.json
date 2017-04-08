@@ -7,7 +7,7 @@
     "start": "better-npm-run start",
     "clean": "rimraf dist",
     "clean:dll": "rimraf dll",
-    "build": "rimraf dist && webpack --config ./config/webpack.config.prod.js"
+    "build": "rimraf dist && webpack -p --config ./config/webpack.config.prod.js --progress"
   },
   "betterScripts": {
     "start": {

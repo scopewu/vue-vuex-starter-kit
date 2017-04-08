@@ -1,9 +1,12 @@
 import VueRouter from 'vue-router';
 
+import Home from './Home/Home.vue'
+
 const routes = [
   {
     name: 'home',
     path: '/',
+    component: Home
   },
   {
     path: '*',
@@ -12,13 +15,9 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
-if (__DEV__) {
-  console.log(process.env.NODE_ENV);
-  console.log(Array(100).fill(1))
-}
-
 export default router
-export {routes}
+export { routes }

@@ -25,6 +25,24 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        use: [{
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+              css: ExtractTextPlugin.extract({
+                use: 'css-loader'
+              }),
+              sass: ExtractTextPlugin.extract({
+                use: ['css-loader', 'sass-loader']
+              })
+            }
+          }
+        }],
+        include: helpers('src'),
+        exclude: /node_modules/
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -36,7 +54,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader!sass-loader'
+          use: ['css-loader', 'sass-loader']
         }),
         include: [helpers('src')]
       }
@@ -45,6 +63,8 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   plugins: [
     new ExtractTextPlugin('[name].[contenthash].css'),
     new UglifyJsPlugin({
+      sourceMap: true,
+      minimize: true,
       beautify: false,
       output: {
         comments: false

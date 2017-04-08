@@ -25,15 +25,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.vue$/,
-        use: [{
-          loader: 'vue-loader'
-        }],
-        include: helpers('src'),
-        exclude: /node_modules/
-      },
-      {
-        test: /.js$/,
+        test: /\.js$/,
         use: [
           {
             loader: 'babel-loader',
@@ -49,6 +41,26 @@ module.exports = {
         test: /\.json$/,
         use: 'json-loader'
       },
+      {
+        test: /\.(png|je?pg|gif)([\?]?.*)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 1,
+            name: 'assets/img/[name].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
+        use: [{
+          loader: "url-loader",
+          options: {
+            limit: 1,
+            name: 'assets/fonts/[name].[ext]'
+          }
+        }]
+      }
     ]
   },
   resolve: {

@@ -33,6 +33,14 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        use: [{
+          loader: 'vue-loader'
+        }],
+        include: helpers('src'),
+        exclude: /node_modules/
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
         include: [helpers('src')]
