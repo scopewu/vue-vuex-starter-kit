@@ -44,3 +44,7 @@ jspm_packages
 
 #OS
 .DS_STORE
+
+#project build
+dll/
+dist/
