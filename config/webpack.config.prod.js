@@ -41,7 +41,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           }
         }],
         include: helpers('src'),
-        exclude: /node_modules/
+        exclude: [/node_modules/]
       },
       {
         test: /\.css$/,

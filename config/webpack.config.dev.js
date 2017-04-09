@@ -40,7 +40,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           loader: 'vue-loader'
         }],
         include: helpers('src'),
-        exclude: /node_modules/
+        exclude: [/node_modules/]
       },
       {
         test: /\.css$/,

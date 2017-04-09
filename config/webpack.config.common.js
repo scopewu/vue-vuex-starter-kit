@@ -35,7 +35,7 @@ module.exports = {
           }
         ],
         include: helpers('src'),
-        exclude: /node_modules/
+        exclude: [/node_modules/]
       },
       {
         test: /\.json$/,
