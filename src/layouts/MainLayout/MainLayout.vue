@@ -28,17 +28,4 @@
     },
   }
 </script>
-<style lang="sass">
-  .layout {
-    height: 100%;
-    padding: 1em 5%;
-  }
-
-  .vue-logo {
-    width: 20%;
-    margin: 0 auto;
-    > img {
-      max-width: 100%
-    }
-  }
-</style>
+<style src="./MainLayout.scss" lang="sass" scoped></style>
