@@ -1,5 +1,5 @@
 const helpers = require('./helpers');
-const Webpack = require('webpack');
+// const Webpack = require('webpack');
 const WebpackMerge = require('webpack-merge');
 const WebpackMergeDll = WebpackMerge.strategy({plugins: 'replace'});
 const webpackCommonConfig = require('./webpack.config.common');
@@ -13,6 +13,7 @@ debug('Start the development config');
  * **/
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
+const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin');
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
@@ -63,6 +64,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   },
   plugins: [
     new HotModuleReplacementPlugin(),
+    new NamedModulesPlugin(),
     new NoEmitOnErrorsPlugin(),
     /**
      * see: https://github.com/shlomiassaf/webpack-dll-bundles-plugin
