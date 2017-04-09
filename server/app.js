@@ -5,6 +5,7 @@ const debug = require('debug')('app:server');
 //const logger = require('morgan');
 //const cookieParser = require('cookie-parser');
 //const bodyParser = require('body-parser');
+const history = require('connect-history-api-fallback');
 const Webpack = require('webpack');
 
 const helpers = require('../config/helpers');
@@ -13,6 +14,8 @@ const {__DEV__, __PROD__, __TEST__} = require('../config/project.config').global
 //const index = require('./routes/index');
 
 const app = express();
+
+app.use(history());
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
