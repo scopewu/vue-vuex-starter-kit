@@ -12,3 +12,13 @@ new Vue({
     MainLayout
   }
 })
+
+if (__DEV__) {
+  /**
+   * See: https://github.com/glenjamin/webpack-hot-middleware/issues/43
+   */
+  if (module.hot) {
+    // TODO: module hot replace need more
+    module.hot.accept();
+  }
+}
