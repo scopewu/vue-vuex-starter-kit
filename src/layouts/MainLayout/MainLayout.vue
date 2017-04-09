@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <div class="vue-logo">
-      <img :src="logo" alt="vue">
+      <img src="./assets/vue-logo.png" alt="vue">
     </div>
     <div class="vue-views">
       <transition>
@@ -18,15 +18,14 @@
 </template>
 <script>
   import '../../style/style.scss'
-  import logo from './assets/vue-logo.png'
+  //import logo from './assets/vue-logo.png'
 
   export default {
     data() {
       return {
-        logo
+        //logo
       }
     },
-    props: ['router', 'routes'],
   }
 </script>
 <style lang="sass">

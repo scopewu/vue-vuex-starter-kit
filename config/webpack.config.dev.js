@@ -12,6 +12,8 @@ debug('Start the development config');
  * webpack plugins
  * **/
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
+const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin');
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
@@ -60,6 +62,11 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     }
   },
   plugins: [
+    new HotModuleReplacementPlugin(),
+    new NoEmitOnErrorsPlugin(),
+    /**
+     * see: https://github.com/shlomiassaf/webpack-dll-bundles-plugin
+     */
     new DllBundlesPlugin({
       bundles: {
         polyfills: [
@@ -85,9 +92,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     new LoaderOptionsPlugin({
       debug: true,
       options: {}
-    }),
-    new Webpack.HotModuleReplacementPlugin(),
-    new Webpack.NoEmitOnErrorsPlugin()
+    })
   ],
   devServer: {
     port: config.port,

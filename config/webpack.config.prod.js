@@ -12,6 +12,7 @@ debug('Start the production config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const OptimizeJsPlugin = require('optimize-js-plugin');
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
@@ -88,6 +89,9 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         negate_iife: false // we need this for lazy v8
       },
     }),
+    new OptimizeJsPlugin({
+      sourceMap: false
+    }),
     new LoaderOptionsPlugin({
       minimize: true,
       debug: false,
@@ -107,13 +111,13 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     })
   ],
   /*node: {
-    global: true,
-    crypto: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    module: 'empty',
-    process: false,
-    clearImmediate: false,
-    setImmediate: false
-  }*/
+   global: true,
+   crypto: 'empty',
+   fs: 'empty',
+   net: 'empty',
+   module: 'empty',
+   process: false,
+   clearImmediate: false,
+   setImmediate: false
+   }*/
 })
