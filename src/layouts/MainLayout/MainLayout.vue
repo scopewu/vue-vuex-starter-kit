@@ -28,4 +28,4 @@
     },
   }
 </script>
-<style src="./MainLayout.scss" lang="sass" scoped></style>
+<style src="./MainLayout.scss" lang="sass"></style>
