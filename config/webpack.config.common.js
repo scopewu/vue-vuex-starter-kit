@@ -37,26 +37,6 @@ module.exports = {
       {
         test: /\.json$/,
         use: 'json-loader'
-      },
-      {
-        test: /\.(png|je?pg|gif)([\?]?.*)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 1,
-            name: 'assets/img/[name].[ext]'
-          }
-        }]
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
-        use: [{
-          loader: "url-loader",
-          options: {
-            limit: 1,
-            name: 'assets/fonts/[name].[ext]'
-          }
-        }]
       }
     ]
   },
@@ -64,10 +44,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     modules: [helpers('src'), helpers('node_modules')],
     alias: {
-      vue: helpers('node_modules/vue/dist/vue.min'),
-      vuex: helpers('node_modules/vuex/dist/vuex.min'),
-      'vue-router': helpers('node_modules/vue-router/dist/vue-router.min'),
-      axios: helpers('node_modules/axios/dist/axios.min')
+      'vue': helpers('node_modules/vue/dist/vue.min.js'),
+      '@': helpers('src')
     }
   },
   plugins: [

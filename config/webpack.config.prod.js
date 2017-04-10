@@ -58,6 +58,26 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           use: ['css-loader', 'sass-loader']
         }),
         include: [helpers('src')]
+      },
+      {
+        test: /\.(png|je?pg|gif)([\?]?.*)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 1,
+            name: 'assets/img/[name].[hash:7].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
+        use: [{
+          loader: "url-loader",
+          options: {
+            limit: 1,
+            name: 'assets/fonts/[name].[hash:7].[ext]'
+          }
+        }]
       }
     ]
   },

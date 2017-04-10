@@ -52,14 +52,32 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
         include: [helpers('src')]
+      },
+      {
+        test: /\.(png|je?pg|gif)([\?]?.*)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 1,
+            name: 'assets/img/[name].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
+        use: [{
+          loader: "url-loader",
+          options: {
+            limit: 1,
+            name: 'assets/fonts/[name].[ext]'
+          }
+        }]
       }
     ]
   },
   resolve: {
     alias: {
-      vue: helpers('node_modules/vue/dist/vue'),
-      vuex: helpers('node_modules/vuex/dist/vuex'),
-      'vue-router': helpers('node_modules/vue-router/dist/vue-router'),
+      'vue': helpers('node_modules/vue/dist/vue.js')
     }
   },
   plugins: [
