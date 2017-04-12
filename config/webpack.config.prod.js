@@ -20,7 +20,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     path: helpers('dist'),
     publicPath: '/',
     filename: '[name].[chunkhash].js',
-    sourceMapFilename: '[name].[chunkhash].map',
+    sourceMapFilename: '[file].map',
     chunkFilename: '[name].[chunkhash].chunk.js'
   },
   module: {
