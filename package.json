@@ -22,26 +22,26 @@
       }
     },
     "compile": {
-      "command": "webpack -p --config ./config/webpack.config.prod.js --progress",
+      "command": "node ./server/bin/compile",
       "env": {
         "DEBUG": "app:*"
       }
     },
     "deploy": {
-      "command": "npm run clean && npm run compile",
+      "command": "npm run compile",
       "env": {
         "DEBUG": "app:*"
       }
     },
     "deploy:dev": {
-      "command": "npm run clean && npm run compile",
+      "command": "npm run compile",
       "env": {
         "NODE_ENV": "development",
         "DEBUG": "app:*"
       }
     },
     "deploy:prod": {
-      "command": "npm run clean && npm run compile",
+      "command": "npm run compile",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"
@@ -66,9 +66,12 @@
     "url": "git+https://github.com/scopewu/vue-vuex-starter-kit.git"
   },
   "keywords": [
-    "a"
+    "vue",
+    "vuex",
+    "vue-router",
+    "vue-start-kit"
   ],
-  "author": "s wu",
+  "author": "scope.wu <scope.wu@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/scopewu/vue-vuex-starter-kit/issues"
