@@ -14,6 +14,9 @@ new Vue({
 })
 
 if (__DEV__) {
+  // Remove productionTip
+  Vue.config.productionTip = false;
+
   /**
    * See: https://github.com/glenjamin/webpack-hot-middleware/issues/43
    */
