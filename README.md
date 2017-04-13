@@ -9,7 +9,7 @@ Get started with Vue, Vuex, and Vue-router. Build app with webpack.
 - [babel](https://github.com/babel/babel)
 - [express](https://github.com/expressjs/express)
 
-##Quick start
+## Quick start
 **Make sure you have Node version >= 6.0 and NPM >= 3**
 
 ```bash
@@ -37,7 +37,7 @@ export PORT=8080 && npm start
 set PORT=8080
 ```
 
-##File Structure
+## File Structure
 We use component development in the project. Component development is an efficient development model and a good way to ensure maintainable code by encapsulating our behavioral logic.
 
 ```
@@ -66,17 +66,17 @@ We use component development in the project. Component development is an efficie
 │   └── styles               # styles of app
 └── mores...
 ```
-##Build System
+## Build System
 We are using `webpack` to develop vue applications. The webpack config is placed in the config folder, which also contains the application configuration.
 
-###build files
+### build files
 ```bash
 # development
 npm run deploy:dev # or npm run deploy
 # production
 npm run deploy:prod
 ```
-###Globals
+### Globals
 In the development environment, we can use the webpack's `DefinePlugin` plugin to set global variables
 
 |Variable|Description|
