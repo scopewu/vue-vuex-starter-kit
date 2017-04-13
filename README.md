@@ -69,13 +69,6 @@ We use component development in the project. Component development is an efficie
 ## Build System
 We are using `webpack` to develop vue applications. The webpack config is placed in the config folder, which also contains the application configuration.
 
-### build files
-```bash
-# development
-npm run deploy:dev # or npm run deploy
-# production
-npm run deploy:prod
-```
 ### Globals
 In the development environment, we can use the webpack's `DefinePlugin` plugin to set global variables
 
@@ -85,3 +78,20 @@ In the development environment, we can use the webpack's `DefinePlugin` plugin t
 |`__DEV__`|True when `process.env.NODE_ENV` is `development`|
 |`__PROD__`|True when `process.env.NODE_ENV` is `production`|
 |`__TEST__`|True when `process.env.NODE_ENV` is `test`|
+
+### build files
+```bash
+# development
+npm run deploy:dev # or yarn run deploy
+# production
+npm run deploy:prod # or yarn run deploy:prod
+```
+
+### Check server
+If you have generated a static file for the project, we can run a suggested server to check if the app is running well.
+```bash
+# development
+npm run server # or yarn run server
+# production
+npm run server:prod # or yarn run server:prod
+```
