@@ -53,7 +53,7 @@ const compile = () => {
   })
     .then(stats => {
       //success
-      debug('Compilation completed successfully.')
+      debug('Webpack: Compiled successfully.')
     })
     .catch(error => {
       debug('Compile error.', error);

@@ -65,7 +65,9 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           loader: 'url-loader',
           options: {
             limit: 1,
-            name: 'assets/img/[name].[hash:7].[ext]'
+            context: helpers('src'),
+            // useRelativePath: true,
+            name: 'assets/img/[path][name].[hash:7].[ext]'
           }
         }]
       },

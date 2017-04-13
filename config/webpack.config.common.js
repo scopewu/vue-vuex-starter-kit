@@ -16,6 +16,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 module.exports = {
   entry: {
@@ -76,6 +77,7 @@ module.exports = {
     new CommonsChunkPlugin({
       name: ['vendor', 'polyfills']
     }),
-    new DefinePlugin(config.globals)
+    new DefinePlugin(config.globals),
+    new ProgressPlugin()
   ]
 }
