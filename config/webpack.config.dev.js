@@ -6,6 +6,8 @@ const webpackCommonConfig = require('./webpack.config.common');
 const config = require('./project.config');
 const debug = require('debug')('app:webpack');
 
+const {styleLoaders} = require('./utils');
+
 debug('Start the development config');
 
 /*
@@ -36,24 +38,6 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        use: [{
-          loader: 'vue-loader'
-        }],
-        include: helpers('src'),
-        exclude: [/node_modules/]
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-        include: [helpers('src')]
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        include: [helpers('src')]
-      },
-      {
         test: /\.(png|je?pg|gif)([\?]?.*)$/,
         use: [{
           loader: 'url-loader',
@@ -73,7 +57,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           }
         }]
       }
-    ]
+    ].concat(styleLoaders({sourceMap: true, extract: false}))
   },
   resolve: {
     alias: {
@@ -106,8 +90,8 @@ module.exports = WebpackMerge(webpackCommonConfig, {
       })
     }),
     new AddAssetHtmlPlugin([
-      { filepath: helpers(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`) },
-      { filepath: helpers(`dll/${DllBundlesPlugin.resolveFile('vendor')}`) }
+      {filepath: helpers(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`)},
+      {filepath: helpers(`dll/${DllBundlesPlugin.resolveFile('vendor')}`)}
     ]),
     new LoaderOptionsPlugin({
       debug: true,

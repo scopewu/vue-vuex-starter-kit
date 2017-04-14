@@ -4,6 +4,8 @@ const WebpackMerge = require('webpack-merge');
 const webpackCommonConfig = require('./webpack.config.common');
 const debug = require('debug')('app:webpack');
 
+const {styleLoaders} = require('./utils');
+
 debug('Start the production config');
 
 /*
@@ -26,40 +28,6 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        use: [{
-          loader: 'vue-loader',
-          options: {
-            loaders: {
-              css: ExtractTextPlugin.extract({
-                use: 'css-loader'
-              }),
-              sass: ExtractTextPlugin.extract({
-                use: ['css-loader', 'sass-loader']
-              })
-            }
-          }
-        }],
-        include: helpers('src'),
-        exclude: [/node_modules/]
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        }),
-        include: [helpers('src')]
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        }),
-        include: [helpers('src')]
-      },
-      {
         test: /\.(png|je?pg|gif)([\?]?.*)$/,
         use: [{
           loader: 'url-loader',
@@ -81,7 +49,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           }
         }]
       }
-    ]
+    ].concat(styleLoaders({sourceMap: true, extract: true}))
   },
   plugins: [
     new ExtractTextPlugin('[name].[contenthash].css'),

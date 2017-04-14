@@ -3,6 +3,8 @@ const helpers = require('./helpers');
 const config = require('./project.config');
 const debug = require('debug')('app:webpack');
 
+const {vueLoaderOptions} = require('./utils');
+
 debug('webpack start.');
 
 /*
@@ -25,6 +27,15 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        use: [
+          {
+            loader: 'vue-loader',
+            options: vueLoaderOptions()
+          }
+        ],
+      },
       {
         test: /\.js$/,
         use: [
