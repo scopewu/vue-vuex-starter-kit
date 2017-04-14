@@ -6,8 +6,6 @@ const webpackCommonConfig = require('./webpack.config.common');
 const config = require('./project.config');
 const debug = require('debug')('app:webpack');
 
-const {styleLoaders} = require('./utils');
-
 debug('Start the development config');
 
 /*
@@ -57,7 +55,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           }
         }]
       }
-    ].concat(styleLoaders({sourceMap: true, extract: false}))
+    ]
   },
   resolve: {
     alias: {

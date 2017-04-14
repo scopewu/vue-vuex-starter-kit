@@ -4,8 +4,6 @@ const WebpackMerge = require('webpack-merge');
 const webpackCommonConfig = require('./webpack.config.common');
 const debug = require('debug')('app:webpack');
 
-const {styleLoaders} = require('./utils');
-
 debug('Start the production config');
 
 /*
@@ -49,7 +47,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           }
         }]
       }
-    ].concat(styleLoaders({sourceMap: true, extract: true}))
+    ]
   },
   plugins: [
     new ExtractTextPlugin('[name].[contenthash].css'),

@@ -3,7 +3,8 @@ const helpers = require('./helpers');
 const config = require('./project.config');
 const debug = require('debug')('app:webpack');
 
-const {vueLoaderOptions} = require('./utils');
+const {vueLoaderOptions, styleLoaders} = require('./utils');
+const {__DEV__, __PROD__} = config.globals;
 
 debug('webpack start.');
 
@@ -50,7 +51,7 @@ module.exports = {
         test: /\.json$/,
         use: 'json-loader'
       }
-    ]
+    ].concat(styleLoaders({sourceMap: __DEV__, extract: __PROD__}))
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
