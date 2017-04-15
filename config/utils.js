@@ -1,7 +1,7 @@
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const config = require('./project.config');
 
-const {__PROD__} = config.globals;
+const {__DEV__, __PROD__} = config.globals;
 
 /**
  * css loaders
@@ -76,7 +76,7 @@ function styleLoaders(options) {
 function vueLoaderOptions() {
   return {
     loaders: cssLoaders({
-      sourceMap: true,
+      sourceMap: __DEV__,
       extract: __PROD__
     })
   }
