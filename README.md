@@ -36,6 +36,32 @@ export PORT=8080 && npm start
 #windows
 set PORT=8080
 ```
+### Css preprocessing
+If you are using less/stylus/styl, you can add them to the project.
+
+in `config/utils.js`
+```javascript
+function cssLoaders({sourceMap = false, extract = true}) {
+  //code...
+
+  // https://vue-loader.vuejs.org/en/configurations/extract-css.html
+  // TODO: Maybe you use less/stylus/styl, you should install the module with npm
+  return {
+    css: generateLoaders(),
+    postcss: generateLoaders(),
+    less: generateLoaders('less'),
+    sass: generateLoaders('sass'),
+    scss: generateLoaders('sass'),
+    stylus: generateLoaders('stylus'),
+    styl: generateLoaders('stylus')
+  }
+}
+```
+In the project root directory implementation `npm install`, install you need to use css tools.
+e.g.
+```bash
+npm install --save-dev less-loader
+```
 
 ## File Structure
 We use component development in the project. Component development is an efficient development model and a good way to ensure maintainable code by encapsulating our behavioral logic.

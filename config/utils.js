@@ -10,18 +10,23 @@ const {__PROD__} = config.globals;
  * @returns {{css: *, postcss: *, less: *, sass: *, scss: *, stylus: *, styl: *}}
  */
 function cssLoaders({sourceMap = false, extract = true}) {
-  const cssLoader = {
-    loader: 'css-loader',
-    options: {
-      minimize: __PROD__,
-      sourceMap: sourceMap
+  const baseCssLoader = [
+    {
+      loader: 'css-loader',
+      options: {
+        minimize: __PROD__,
+        sourceMap: sourceMap
+      }
+    },
+    {
+      loader: 'postcss-loader'
     }
-  }
+  ]
 
   // generate loader string to be used with extract text plugin
   function generateLoaders(loader, loaderOptions) {
-    const loaders = [cssLoader];
-    if (loader) {
+    const loaders = baseCssLoader;
+    if (loader && loader !== 'postcss') {
       loaders.push({
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
@@ -43,14 +48,15 @@ function cssLoaders({sourceMap = false, extract = true}) {
   }
 
   // https://vue-loader.vuejs.org/en/configurations/extract-css.html
+  // TODO: Maybe you use less/stylus/styl, you should install the module with npm
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
-    less: generateLoaders('less'),
+    //less: generateLoaders('less'),
     sass: generateLoaders('sass'),
     scss: generateLoaders('sass'),
-    stylus: generateLoaders('stylus'),
-    styl: generateLoaders('stylus')
+    //stylus: generateLoaders('stylus'),
+    //styl: generateLoaders('stylus')
   }
 }
 
