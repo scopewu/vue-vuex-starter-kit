@@ -3,13 +3,27 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import Home from './Home/Home.vue'
+import Home from './Home';
+// import Counter from './Counter'
+
+const Counter = resolve => require.ensure([], () => resolve(require('./Counter').default), 'counter');
 
 const routes = [
   {
     name: 'home',
     path: '/',
-    component: Home
+    component: Home,
+    meta: {
+      title: 'Home'
+    }
+  },
+  {
+    name: 'counter',
+    path: '/counter',
+    component: Counter,
+    meta: {
+      title: 'Counter'
+    }
   },
   {
     path: '*',

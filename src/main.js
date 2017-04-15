@@ -2,11 +2,13 @@ import Vue from 'vue';
 
 import router from './router';
 import MainLayout from './layouts/MainLayout';
+import store from './store';
 
 new Vue({
   el: '#root',
   data: {},
   router,
+  store,
   template: '<main-layout/>',
   components: {
     MainLayout
