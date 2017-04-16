@@ -12,7 +12,7 @@ const webpackCompiler = webpackConfig => (
     debug('Compiler ------>>>>>>');
     compiler.run((error, stats) => {
       if (error) {
-        debug('Webpack compiler encountered a fatal error.', err);
+        debug('Webpack compiler encountered a fatal error.', error);
         return reject(error)
       }
 
