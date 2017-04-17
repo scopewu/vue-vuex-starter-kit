@@ -44,8 +44,7 @@ module.exports = {
             loader: 'babel-loader'
           }
         ],
-        include: helpers('src'),
-        exclude: [/node_modules/]
+        include: [helpers('src')]
       },
       {
         test: /\.json$/,

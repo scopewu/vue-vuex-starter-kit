@@ -67,7 +67,8 @@ function styleLoaders(options) {
     const loader = loaders[extension];
     output.push({
       test: new RegExp('\\.' + extension + '$'),
-      use: loader
+      use: loader,
+      exclude: [/node_modules/]
     })
   }
   return output
