@@ -18,6 +18,13 @@ function cssLoaders({sourceMap = false, extract = true}) {
         sourceMap: sourceMap
       }
     },
+    /*
+    * Webpack loader that resolves relative paths in url() statements based on the original source file.
+    * Use in conjunction with the sass-loader and specify your asset url() relative to the .scss file in question.
+    * **/
+    {
+      loader: 'resolve-url-loader'
+    },
     {
       loader: 'postcss-loader'
     }
