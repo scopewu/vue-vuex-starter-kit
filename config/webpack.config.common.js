@@ -71,7 +71,7 @@ module.exports = {
       favicon: helpers('public/favicon.ico'),
       inject: 'body',
       minify: {
-        collapseWhitespace: true
+        collapseWhitespace: __PROD__
       }
     }),
     new CommonsChunkPlugin({

@@ -7,6 +7,7 @@ import Home from './Home';
 // import Counter from './Counter'
 
 const Counter = resolve => require.ensure([], () => resolve(require('./Counter').default), 'counter');
+const GeographicalIp = resolve => require.ensure([], () => resolve(require('./GeographicalIp').default));
 
 const routes = [
   {
@@ -26,8 +27,12 @@ const routes = [
     }
   },
   {
-    path: '*',
-    redirect: '/'
+    name: 'geographicalIp',
+    path: '/geographical-ip',
+    component: GeographicalIp,
+    meta: {
+      title: 'Geographical Ip'
+    }
   }
 ]
 

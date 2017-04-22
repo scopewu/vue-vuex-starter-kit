@@ -2,9 +2,11 @@
   <div class="Header">
     <div class="Header-padding">
       <div class="text-center">
-        <router-link to="/">Home</router-link>
+        <router-link to="/" exact>Home</router-link>
         <span> - </span>
         <router-link :to="{name: 'counter'}">Counter</router-link>
+        <span> - </span>
+        <router-link :to="{name: 'geographicalIp'}">Geographical Ip</router-link>
       </div>
     </div>
   </div>
@@ -15,5 +17,14 @@
 <style scoped>
   .Header-padding {
     padding: 0.5em 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .router-link-active {
+    font-weight: bold;
+    text-decoration: underline;
   }
 </style>
