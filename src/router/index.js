@@ -41,4 +41,10 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+router.afterEach(to => {
+  if (to.meta.title !== undefined) {
+    document.title = `${ to.meta.title } - Vue-vuex-starter-kit`
+  }
+})
+
 export default router
