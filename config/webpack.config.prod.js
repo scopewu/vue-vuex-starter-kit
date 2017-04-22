@@ -12,6 +12,7 @@ debug('Start the production config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
 
 module.exports = WebpackMerge(webpackCommonConfig, {
@@ -51,6 +52,9 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   },
   plugins: [
     new ExtractTextPlugin('[name].[contenthash].css'),
+    /*
+     * See: https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
+     * **/
     new UglifyJsPlugin({
       sourceMap: true,
       minimize: true,
@@ -96,6 +100,15 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           customAttrAssign: [/\)?\]?=/]
         }
       }
+    }),
+    /*
+    * While writing your code, you may have already added many code split points to load stuff on demand.
+    * After compiling you might notice that there are too many chunks that are too small - creating larger HTTP overhead.
+    * webpack can post-process your chunks by merging them.
+    * See: https://webpack.js.org/plugins/limit-chunk-count-plugin/
+    * **/
+    new MinChunkSizePlugin({
+      minChunkSize: 10000
     })
   ],
   /*node: {
