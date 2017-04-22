@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 import Home from './Home';
 // import Counter from './Counter'
+import NotFoundComponent from './NotFoundComponent'
 
 const Counter = resolve => require.ensure([], () => resolve(require('./Counter').default), 'counter');
 const GeographicalIp = resolve => require.ensure([], () => resolve(require('./GeographicalIp').default));
@@ -32,6 +33,14 @@ const routes = [
     component: GeographicalIp,
     meta: {
       title: 'Geographical Ip'
+    }
+  },
+  {
+    name: 'notFound',
+    path: '*',
+    component: NotFoundComponent,
+    meta: {
+      title: '404 Not Found'
     }
   }
 ]
