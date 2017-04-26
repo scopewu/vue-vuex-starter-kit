@@ -69,7 +69,7 @@ if (__DEV__) {
   })
 } else if (__PROD__) {
   debug('Prod environment server running.');
-  app.use(express.static(helpers('dist')))
+  app.use(express.static(helpers('dist'), {maxAge: '365d'}))
 } else if (__TEST__) {
   debug('The test environment is under development.')
 }
