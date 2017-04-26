@@ -19,15 +19,15 @@
 </template>
 <script>
   import '../../style/style.scss'
-  //import logo from './assets/vue-logo.png'
+  // import logo from './assets/vue-logo.png'
 
-  //import VHeader from '@/components/VHeader'
+  // import VHeader from '@/components/VHeader'
   import VHeader from '../../components/VHeader'
 
   export default {
     data() {
       return {
-        //logo
+        // logo
       }
     },
     components: {
