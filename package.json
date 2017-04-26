@@ -54,7 +54,7 @@
       }
     },
     "server:prod": {
-      "command": "node ./server/bin/www",
+      "command": "npm run deploy:prod && node ./server/bin/www",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"
@@ -88,8 +88,7 @@
     "normalize.css": "^6.0.0",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
-    "vuex": "^2.3.0",
-    "webpack": "^2.4.1"
+    "vuex": "^2.3.0"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^2.0.1",
@@ -118,6 +117,7 @@
     "url-loader": "^0.5.8",
     "vue-loader": "^11.3.4",
     "vue-template-compiler": "^2.2.6",
+    "webpack": "^2.4.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-dll-bundles-plugin": "^1.0.0-beta.5",
     "webpack-hot-middleware": "^2.18.0",

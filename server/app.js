@@ -6,7 +6,6 @@ const debug = require('debug')('app:server');
 //const cookieParser = require('cookie-parser');
 //const bodyParser = require('body-parser');
 const history = require('connect-history-api-fallback');
-const Webpack = require('webpack');
 
 const helpers = require('../config/helpers');
 const {__DEV__, __PROD__, __TEST__} = require('../config/project.config').globals;
@@ -32,6 +31,7 @@ app.use(express.static(path.join(helpers(), 'public')));
 if (__DEV__) {
   debug('Enabling webpack dev and HMR middleware');
 
+  const Webpack = require('webpack');
   const webpackConfig = require('../webpack.config');
   const compiler = Webpack(webpackConfig);
 
