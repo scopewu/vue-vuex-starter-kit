@@ -1,14 +1,12 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
-
-import Home from './Home';
+import Home from './Home'
 // import Counter from './Counter'
 import NotFoundComponent from './NotFoundComponent'
 
-const Counter = resolve => require.ensure([], () => resolve(require('./Counter').default), 'counter');
-const GeographicalIp = resolve => require.ensure([], () => resolve(require('./GeographicalIp').default));
+const Counter = resolve => require.ensure([], () => resolve(require('./Counter').default), 'counter')
+const GeographicalIp = resolve => require.ensure([], () => resolve(require('./GeographicalIp').default))
 
 const routes = [
   {
@@ -45,6 +43,8 @@ const routes = [
   }
 ]
 
+Vue.use(VueRouter)
+
 const router = new VueRouter({
   routes,
   mode: 'history'
@@ -52,7 +52,7 @@ const router = new VueRouter({
 
 router.afterEach(to => {
   if (to.meta.title !== undefined) {
-    document.title = `${ to.meta.title } - Vue-vuex-starter-kit`
+    document.title = `${to.meta.title} - Vue-vuex-starter-kit`
   }
 })
 

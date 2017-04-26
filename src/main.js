@@ -1,9 +1,10 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-import router from './router';
-import MainLayout from './layouts/MainLayout';
-import store from './store';
+import router from './router'
+import MainLayout from './layouts/MainLayout'
+import store from './store'
 
+/* eslint-disable no-new */
 new Vue({
   el: '#root',
   data: {},
@@ -15,15 +16,17 @@ new Vue({
   }
 })
 
+debugger
+
 if (__DEV__) {
   // Remove productionTip
-  Vue.config.productionTip = false;
+  Vue.config.productionTip = false
 
   /**
    * See: https://github.com/glenjamin/webpack-hot-middleware/issues/43
    */
   if (module.hot) {
     // TODO: module hot replace need more
-    module.hot.accept();
+    module.hot.accept()
   }
 }

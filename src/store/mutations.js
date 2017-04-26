@@ -1,10 +1,10 @@
-import * as types from './mutation-types';
+import * as types from './mutation-types'
 
 const mutations = {
-  [types.COUNT_INCREMENT] (state) {
+  [types.COUNT_INCREMENT](state) {
     state.count++
   },
-  [types.COUNT_DECREMENT] (state) {
+  [types.COUNT_DECREMENT](state) {
     state.count--
   }
 }
