@@ -16,8 +16,6 @@ new Vue({
   }
 })
 
-debugger
-
 if (__DEV__) {
   // Remove productionTip
   Vue.config.productionTip = false
