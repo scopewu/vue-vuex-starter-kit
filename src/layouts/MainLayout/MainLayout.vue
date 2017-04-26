@@ -35,4 +35,4 @@
     }
   }
 </script>
-<style src="./MainLayout.scss" lang="sass"></style>
+<style src="./MainLayout.scss" lang="scss"></style>
