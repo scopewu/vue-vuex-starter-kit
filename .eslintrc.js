@@ -40,7 +40,8 @@ module.exports = {
     'no-var': 2,
     'no-prototype-builtins': 1,
     'no-multiple-empty-lines': isProd ? 1 : 0,
-    'no-unused-vars': isProd ? 2 : 1,
-    'one-var': 0
+    'no-unused-vars': 1,
+    'one-var': 0,
+    'eol-last': 1
   }
 }
