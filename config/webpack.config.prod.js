@@ -31,10 +31,10 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 1,
+            limit: 2048,
             context: helpers('src'),
-            // useRelativePath: true,
-            name: 'assets/img/[path][name].[hash:7].[ext]'
+            useRelativePath: true,
+            name: 'img/[path][name].[hash:7].[ext]'
           }
         }]
       },
@@ -43,8 +43,10 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         use: [{
           loader: "url-loader",
           options: {
-            limit: 1,
-            name: 'assets/fonts/[name].[hash:7].[ext]'
+            limit: 2048,
+            context: helpers('src'),
+            useRelativePath: true,
+            name: 'fonts/[path][name].[hash:7].[ext]'
           }
         }]
       }

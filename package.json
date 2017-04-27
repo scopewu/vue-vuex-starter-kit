@@ -23,7 +23,7 @@
       }
     },
     "compile": {
-      "command": "node ./server/bin/compile",
+      "command": "npm run lint && node ./server/bin/compile",
       "env": {
         "DEBUG": "app:*"
       }

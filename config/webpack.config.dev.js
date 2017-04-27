@@ -38,20 +38,20 @@ module.exports = WebpackMerge(webpackCommonConfig, {
       {
         test: /\.(png|je?pg|gif)([\?]?.*)$/,
         use: [{
-          loader: 'url-loader',
+          loader: 'file-loader',
           options: {
-            limit: 1,
-            name: 'assets/img/[name].[ext]'
+            context: helpers('src'),
+            name: '[path][name].[ext]'
           }
         }]
       },
       {
         test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
         use: [{
-          loader: "url-loader",
+          loader: 'file-loader',
           options: {
-            limit: 1,
-            name: 'assets/fonts/[name].[ext]'
+            context: helpers('src'),
+            name: '[path][name].[ext]'
           }
         }]
       }
