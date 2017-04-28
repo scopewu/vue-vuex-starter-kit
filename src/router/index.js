@@ -3,10 +3,16 @@ import VueRouter from 'vue-router'
 
 import Home from './Home'
 // import Counter from './Counter'
-import NotFoundComponent from './NotFoundComponent'
 
-const Counter = resolve => require.ensure([], () => resolve(require('./Counter').default), 'counter')
-const GeographicalIp = resolve => require.ensure([], () => resolve(require('./GeographicalIp').default))
+const Counter = resolve => import('./Counter')
+  .then(r => resolve(r.default))
+  .catch(err => console.log('Failed to load', err))
+const GeographicalIp = resolve => import('./GeographicalIp')
+  .then(r => resolve(r.default))
+  .catch(err => console.log('Failed to load', err))
+const NotFoundComponent = resolve => import('./NotFoundComponent')
+  .then(r => resolve(r.default))
+  .catch(err => console.log('Failed to load', err))
 
 const routes = [
   {

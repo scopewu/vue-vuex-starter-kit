@@ -57,3 +57,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+a {
+  text-decoration: none;
+}
+
+.router-link-active {
+  font-weight: 700;
+  text-decoration: underline;
+}
