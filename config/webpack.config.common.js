@@ -63,6 +63,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    mainFields: ['jsnext:main', 'main'],
     modules: [helpers('src'), helpers('node_modules')],
     alias: {
       'vue': helpers('node_modules/vue/dist/vue.min.js'),
