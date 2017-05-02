@@ -5,7 +5,10 @@
       <div class="geographical-search">
         <form class="" @submit.prevent="searchGeographicalData">
           <div class="search-in">
-            <input type="text" v-model="hostname" class="form-control" placeholder="hostname or ip">
+            <select class="form-control" v-model="hostname">
+              <option value="">请选择</option>
+              <option v-for="h in hostnames" :value="h">{{h}}</option>
+            </select>
           </div>
           <button type="submit" class="btn btn-default">Search</button>
         </form>
@@ -37,6 +40,7 @@
     data() {
       return {
         hostname: '',
+        hostnames: ['github.com', '8.8.8.8', 'youtu.be', 'twitter.com'],
         geographicalData: {}
       }
     },
@@ -50,6 +54,9 @@
         axios.get(`https://freegeoip.net/json/${hostName}`)
           .then((res) => {
             this.geographicalData = res.data
+          })
+          .catch(e => {
+            console.log(e)
           })
       },
       searchGeographicalData() {
