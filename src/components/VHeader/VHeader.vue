@@ -11,9 +11,6 @@
     </div>
   </div>
 </template>
-<script>
-  export default {}
-</script>
 <style scoped>
   .Header-padding {
     padding: 0.5em 0;
