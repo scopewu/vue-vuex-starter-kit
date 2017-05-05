@@ -1,3 +1,6 @@
-import NotFoundComponent from './NotFoundComponent.vue'
+const NotFoundComponent = () => ({
+  component: import('./NotFoundComponent.vue'),
+  timeout: 4000
+})
 
 export default NotFoundComponent

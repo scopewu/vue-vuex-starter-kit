@@ -51,7 +51,7 @@
     },
     methods: {
       fetchGeographicalData(hostName = '') {
-        axios.get(`https://freegeoip.net/json/${hostName}`)
+        axios.get(`https://freegeoip.net/json/${hostName}`, {timeout: 6000})
           .then((res) => {
             this.geographicalData = res.data
           })

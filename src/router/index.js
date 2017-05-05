@@ -2,17 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from './Home'
-// import Counter from './Counter'
-
-const Counter = resolve => import('./Counter')
-  .then(r => resolve(r.default))
-  .catch(err => console.log('Failed to load', err))
-const GeographicalIp = resolve => import('./GeographicalIp')
-  .then(r => resolve(r.default))
-  .catch(err => console.log('Failed to load', err))
-const NotFoundComponent = resolve => import('./NotFoundComponent')
-  .then(r => resolve(r.default))
-  .catch(err => console.log('Failed to load', err))
+import Counter from './Counter'
+import GeographicalIp from './GeographicalIp'
+import NotFoundComponent from './NotFoundComponent'
 
 const routes = [
   {

@@ -62,7 +62,7 @@
       }
     },
     "server:prod": {
-      "command": "npm run deploy:prod && node ./server/bin/www",
+      "command": "node ./server/bin/www",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"
