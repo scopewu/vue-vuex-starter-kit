@@ -8,17 +8,12 @@
   </div>
 </template>
 <script>
-  import { mapActions } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
 
   export default {
-    data() {
-      return {}
-    },
-    computed: {
-      count() {
-        return this.$store.getters.getCount
-      }
-    },
+    computed: mapState([
+      'count'
+    ]),
     methods: mapActions([
       'countIncrement',
       'countDecrement'
