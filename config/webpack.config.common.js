@@ -66,11 +66,15 @@ module.exports = {
     mainFields: ['jsnext:main', 'main'],
     modules: [helpers('src'), helpers('node_modules')],
     alias: {
-      'vue': helpers('node_modules/vue/dist/vue.min.js'),
+      'vue': helpers('node_modules/vue/dist/vue.esm.js'),
+      'vue-router': helpers('node_modules/vue-router/dist/vue-router.esm.js'),
+      'vuex': helpers('node_modules/vuex/dist/vuex.esm.js'),
       '@': helpers('src')
     }
   },
   plugins: [
+    new DefinePlugin(config.globals),
+    new ProgressPlugin(),
     new AssetsWebpackPlugin({
       path: helpers('dist'),
       filename: 'webpack-assets.json',
@@ -97,8 +101,6 @@ module.exports = {
     // Specify the correct order the scripts will be injected in
     new CommonsChunkPlugin({
       name: ['vendor', 'polyfills']
-    }),
-    new DefinePlugin(config.globals),
-    new ProgressPlugin()
+    })
   ]
 }

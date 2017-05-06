@@ -57,11 +57,6 @@ module.exports = WebpackMerge(webpackCommonConfig, {
       }
     ]
   },
-  resolve: {
-    alias: {
-      'vue': helpers('node_modules/vue/dist/vue.js')
-    }
-  },
   plugins: [
     new HotModuleReplacementPlugin(),
     new NamedModulesPlugin(),
