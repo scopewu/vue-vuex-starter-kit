@@ -1,5 +1,4 @@
 // for browser
-import 'ie-shim' // IE 9 support
 
 // import 'core-js/es6';
 // just import what are you using
