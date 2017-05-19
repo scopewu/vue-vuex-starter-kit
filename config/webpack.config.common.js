@@ -63,12 +63,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
-    mainFields: ['jsnext:main', 'main'],
+    mainFields: ['jsnext:main', 'module', 'main'],
     modules: [helpers('src'), helpers('node_modules')],
     alias: {
       'vue': helpers('node_modules/vue/dist/vue.esm.js'),
-      'vue-router': helpers('node_modules/vue-router/dist/vue-router.esm.js'),
-      'vuex': helpers('node_modules/vuex/dist/vuex.esm.js'),
       '@': helpers('src')
     }
   },
