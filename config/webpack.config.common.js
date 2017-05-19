@@ -1,25 +1,25 @@
 // const Webpack = require('webpack');
-const helpers = require('./helpers');
-const config = require('./project.config');
-const debug = require('debug')('app:webpack');
+const helpers = require('./helpers')
+const config = require('./project.config')
+const debug = require('debug')('app:webpack')
 
-const {vueLoaderOptions, styleLoaders} = require('./utils');
-const {__DEV__, __PROD__} = config.globals;
+const {vueLoaderOptions, styleLoaders} = require('./utils')
+const {__DEV__, __PROD__} = config.globals
 
-debug('webpack start.');
+debug('webpack start.')
 
 /*
  * webpack plugins
  * **/
-const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AssetsWebpackPlugin = require('assets-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
+// const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin')
+// const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
+const DefinePlugin = require('webpack/lib/DefinePlugin')
+// const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const AssetsWebpackPlugin = require('assets-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ProgressPlugin = require('webpack/lib/ProgressPlugin')
 
 module.exports = {
   entry: {
@@ -44,7 +44,7 @@ module.exports = {
             loader: 'vue-loader',
             options: vueLoaderOptions()
           }
-        ],
+        ]
       },
       {
         test: /\.js$/,

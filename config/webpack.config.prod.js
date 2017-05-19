@@ -1,19 +1,19 @@
-const helpers = require('./helpers');
+const helpers = require('./helpers')
 // const Webpack = require('webpack');
-const WebpackMerge = require('webpack-merge');
-const webpackCommonConfig = require('./webpack.config.common');
-const debug = require('debug')('app:webpack');
+const WebpackMerge = require('webpack-merge')
+const webpackCommonConfig = require('./webpack.config.common')
+const debug = require('debug')('app:webpack')
 
-debug('Start the production config');
+debug('Start the production config')
 
 /*
  * webpack plugins
  * **/
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin');
-const OptimizeJsPlugin = require('optimize-js-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
+const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
+const OptimizeJsPlugin = require('optimize-js-plugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
@@ -27,7 +27,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   module: {
     rules: [
       {
-        test: /\.(png|je?pg|gif)([\?]?.*)$/,
+        test: /\.(png|je?pg|gif)([?]?.*)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -39,9 +39,9 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         }]
       },
       {
-        test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
+        test: /\.(woff2?|eot|ttf|otf|svg)([?]?.*)$/,
         use: [{
-          loader: "url-loader",
+          loader: 'url-loader',
           options: {
             limit: 2048,
             context: helpers('src'),
@@ -81,7 +81,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         if_return: true,
         join_vars: true,
         negate_iife: false // we need this for lazy v8
-      },
+      }
     }),
     new OptimizeJsPlugin({
       sourceMap: false
@@ -112,8 +112,8 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     new MinChunkSizePlugin({
       minChunkSize: 10000
     })
-  ],
-  /*node: {
+  ]
+  /* node: {
    global: true,
    crypto: 'empty',
    fs: 'empty',
@@ -122,5 +122,5 @@ module.exports = WebpackMerge(webpackCommonConfig, {
    process: false,
    clearImmediate: false,
    setImmediate: false
-   }*/
+   } */
 })

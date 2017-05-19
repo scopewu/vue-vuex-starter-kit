@@ -1,7 +1,6 @@
 const helpers = require('./helpers')
 const WebpackMerge = require('webpack-merge')
 const webpackCommonConfig = require('./webpack.config.common')
-const config = require('./project.config')
 const debug = require('debug')('app:webpack')
 
 debug('Start the test config')
@@ -11,7 +10,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   module: {
     rules: [
       {
-        test: /\.(png|je?pg|gif)([\?]?.*)$/,
+        test: /\.(png|je?pg|gif)([?]?.*)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -21,7 +20,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         }]
       },
       {
-        test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
+        test: /\.(woff2?|eot|ttf|otf|svg)([?]?.*)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -44,5 +43,5 @@ module.exports = WebpackMerge(webpackCommonConfig, {
       'scss-loader': 'sass-loader'
     }
   },
-  plugins: [],
+  plugins: []
 })

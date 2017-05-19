@@ -1,22 +1,22 @@
-const helpers = require('./helpers');
+const helpers = require('./helpers')
 // const Webpack = require('webpack');
-const WebpackMerge = require('webpack-merge');
-const WebpackMergeDll = WebpackMerge.strategy({plugins: 'replace'});
-const webpackCommonConfig = require('./webpack.config.common');
-const config = require('./project.config');
-const debug = require('debug')('app:webpack');
+const WebpackMerge = require('webpack-merge')
+const WebpackMergeDll = WebpackMerge.strategy({plugins: 'replace'})
+const webpackCommonConfig = require('./webpack.config.common')
+const config = require('./project.config')
+const debug = require('debug')('app:webpack')
 
-debug('Start the development config');
+debug('Start the development config')
 
 /*
  * webpack plugins
  * **/
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
-const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
-const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin');
-const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
+const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin')
+const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin')
+const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin')
+const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'cheap-module-source-map',
@@ -31,12 +31,12 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     sourceMapFilename: '[file].map',
     chunkFilename: '[name].chunk.js',
     library: 'ac_[name]',
-    libraryTarget: 'var',
+    libraryTarget: 'var'
   },
   module: {
     rules: [
       {
-        test: /\.(png|je?pg|gif)([\?]?.*)$/,
+        test: /\.(png|je?pg|gif)([?]?.*)$/,
         use: [{
           loader: 'file-loader',
           options: {
@@ -46,7 +46,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         }]
       },
       {
-        test: /\.(woff2?|eot|ttf|otf|svg)([\?]?.*)$/,
+        test: /\.(woff2?|eot|ttf|otf|svg)([?]?.*)$/,
         use: [{
           loader: 'file-loader',
           options: {
@@ -101,6 +101,6 @@ module.exports = WebpackMerge(webpackCommonConfig, {
       aggregateTimeout: 300,
       poll: 1000
     }
-  },
+  }
 
 })

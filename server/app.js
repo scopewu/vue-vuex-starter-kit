@@ -1,39 +1,39 @@
-const express = require('express');
-const path = require('path');
-const debug = require('debug')('app:server');
-//const favicon = require('serve-favicon');
-//const logger = require('morgan');
-//const cookieParser = require('cookie-parser');
-//const bodyParser = require('body-parser');
-const history = require('connect-history-api-fallback');
+const express = require('express')
+const path = require('path')
+const debug = require('debug')('app:server')
+// const favicon = require('serve-favicon');
+// const logger = require('morgan');
+// const cookieParser = require('cookie-parser');
+// const bodyParser = require('body-parser');
+const history = require('connect-history-api-fallback')
 
-const helpers = require('../config/helpers');
-const {__DEV__, __PROD__, __TEST__} = require('../config/project.config').globals;
+const helpers = require('../config/helpers')
+const {__DEV__, __PROD__, __TEST__} = require('../config/project.config').globals
 
-//const index = require('./routes/index');
+// const index = require('./routes/index');
 
-const app = express();
+const app = express()
 
-app.use(history());
+app.use(history())
 
 // view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'pug');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//app.use(logger('dev'));
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(cookieParser());
-app.use(express.static(path.join(helpers(), 'public')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(logger('dev'));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
+app.use(express.static(path.join(helpers(), 'public')))
 
 if (__DEV__) {
-  debug('Enabling webpack dev and HMR middleware');
+  debug('Enabling webpack dev and HMR middleware')
 
-  const Webpack = require('webpack');
-  const webpackConfig = require('../webpack.config');
-  const compiler = Webpack(webpackConfig);
+  const Webpack = require('webpack')
+  const webpackConfig = require('../webpack.config')
+  const compiler = Webpack(webpackConfig)
 
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
@@ -54,7 +54,7 @@ if (__DEV__) {
     path: '/__webpack_hmr'
   }))
 
-  app.use(express.static(helpers('public')));
+  app.use(express.static(helpers('public')))
 
   app.use('*', function (req, res, next) {
     const filename = path.join(compiler.outputPath, 'index.html')
@@ -68,12 +68,12 @@ if (__DEV__) {
     })
   })
 } else if (__PROD__) {
-  debug('Prod environment server running.');
+  debug('Prod environment server running.')
   app.use(express.static(helpers('dist'), {maxAge: '365d'}))
 } else if (__TEST__) {
   debug('The test environment is under development.')
 }
 
-//app.use('/', index);
+// app.use('/', index);
 
-module.exports = app;
+module.exports = app

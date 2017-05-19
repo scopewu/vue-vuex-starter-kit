@@ -1,7 +1,7 @@
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const config = require('./project.config');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+const config = require('./project.config')
 
-const {__DEV__, __PROD__} = config.globals;
+const {__DEV__, __PROD__} = config.globals
 
 /**
  * css loaders
@@ -34,7 +34,7 @@ function cssLoaders({sourceMap = false, extract = true}) {
 
   // generate loader string to be used with extract text plugin
   function generateLoaders(loader, loaderOptions) {
-    const loaders = baseCssLoader;
+    const loaders = baseCssLoader
     if (loader && loader !== 'postcss') {
       loaders.push({
         loader: loader + '-loader',
@@ -61,19 +61,19 @@ function cssLoaders({sourceMap = false, extract = true}) {
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
-    //less: generateLoaders('less'),
+    // less: generateLoaders('less'),
     sass: generateLoaders('sass'),
-    scss: generateLoaders('sass'),
-    //stylus: generateLoaders('stylus'),
-    //styl: generateLoaders('stylus')
+    scss: generateLoaders('sass')
+    // stylus: generateLoaders('stylus'),
+    // styl: generateLoaders('stylus')
   }
 }
 
 function styleLoaders(options) {
-  const output = [];
-  const loaders = cssLoaders(options);
+  const output = []
+  const loaders = cssLoaders(options)
   for (const extension in loaders) {
-    const loader = loaders[extension];
+    const loader = loaders[extension]
     output.push({
       test: new RegExp('\\.' + extension + '$'),
       use: loader,

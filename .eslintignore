@@ -1,4 +1,2 @@
-config/*.js
 dist/**/*.js
 dll/*.js
-server/**/*.js
