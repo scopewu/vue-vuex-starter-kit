@@ -19,8 +19,8 @@ const webpackCompiler = webpackConfig => (
       const jsonStats = stats.toJson()
 
       debug(stats.toString({
-        chunks: true,
-        chunkModules: true,
+        chunks: false,
+        chunkModules: false,
         colors: true
       }))
 
