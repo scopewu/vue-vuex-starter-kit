@@ -1,14 +1,6 @@
 # vue-vuex-starter-kit
 Get started with Vue, Vuex, and Vue-router. Build app with webpack.
 
-## Features
-- [vue](https://github.com/vuejs/vue)
-- [vuex](https://github.com/vuejs/vuex)
-- [vue-router](https://github.com/vuejs/vue-router)
-- [webpack](https://github.com/webpack/webpack)
-- [babel](https://github.com/babel/babel)
-- [express](https://github.com/expressjs/express)
-
 ## Quick start
 **Make sure you have Node version >= 6.0 and NPM >= 3**
 
@@ -121,3 +113,14 @@ npm run server # or yarn run server
 # production
 npm run server:prod # or yarn run server:prod
 ```
+
+## Features
+- [vue](https://github.com/vuejs/vue)
+- [vuex](https://github.com/vuejs/vuex)
+- [vue-router](https://github.com/vuejs/vue-router)
+- [webpack](https://github.com/webpack/webpack)
+- [babel](https://github.com/babel/babel)
+- [express](https://github.com/expressjs/express)
+
+## License
+[MIT](https://github.com/scopewu/vue-vuex-starter-kit/blob/master/LICENSE)
