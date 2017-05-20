@@ -1,17 +1,16 @@
-const config = {
-  env: process.env.NODE_ENV || 'development',
+const ENV = process.env.NODE_ENV || 'development'
+
+module.exports = {
+  env: ENV,
   port: process.env.PORT || 3000,
-  host: process.env.HOST || 'localhost'
+  host: process.env.HOST || 'localhost',
+  globals: {
+    'process.env': {
+      'NODE_ENV': JSON.stringify(ENV)
+    },
+    NODE_ENV: ENV,
+    __DEV__: ENV === 'development',
+    __PROD__: ENV === 'production',
+    __TEST__: ENV === 'test'
+  }
 }
-
-config.globals = {
-  'process.env': {
-    'NODE_ENV': JSON.stringify(config.env)
-  },
-  NODE_ENV: config.env,
-  __DEV__: config.env === 'development',
-  __PROD__: config.env === 'production',
-  __TEST__: config.env === 'test'
-}
-
-module.exports = config
