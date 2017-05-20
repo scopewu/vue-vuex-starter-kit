@@ -1,5 +1,5 @@
 const express = require('express')
-const path = require('path')
+// const path = require('path')
 const debug = require('debug')('app:server')
 // const favicon = require('serve-favicon');
 // const logger = require('morgan');
@@ -8,7 +8,8 @@ const debug = require('debug')('app:server')
 const history = require('connect-history-api-fallback')
 
 const helpers = require('../config/helpers')
-const {__DEV__, __PROD__, __TEST__} = require('../config/project.config').globals
+const config = require('../config/project.config')
+const {__DEV__, __PROD__, __TEST__} = config.globals
 
 // const index = require('./routes/index');
 
@@ -26,7 +27,6 @@ app.use(history())
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
-app.use(express.static(path.join(helpers(), 'public')))
 
 if (__DEV__) {
   debug('Enabling webpack dev and HMR middleware')
@@ -55,21 +55,10 @@ if (__DEV__) {
   }))
 
   app.use(express.static(helpers('public')))
-
-  app.use('*', function (req, res, next) {
-    const filename = path.join(compiler.outputPath, 'index.html')
-    compiler.outputFileSystem.readFile(filename, (err, result) => {
-      if (err) {
-        return next(err)
-      }
-      res.set('content-type', 'text/html')
-      res.send(result)
-      res.end()
-    })
-  })
+  app.use(express.static(compiler.outputPath))
 } else if (__PROD__) {
   debug('Prod environment server running.')
-  app.use(express.static(helpers('dist'), {maxAge: '365d'}))
+  app.use(express.static(config.outDir, {maxAge: '365d'}))
 } else if (__TEST__) {
   debug('The test environment is under development.')
 }

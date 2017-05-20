@@ -25,8 +25,8 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     main: [helpers('src/main')].concat(['webpack-hot-middleware/client?path=/__webpack_hmr'])
   },
   output: {
-    path: helpers('dist'),
-    publicPath: '/',
+    path: config.outDir,
+    publicPath: config.publicPath,
     filename: '[name].js',
     sourceMapFilename: '[file].map',
     chunkFilename: '[name].chunk.js',

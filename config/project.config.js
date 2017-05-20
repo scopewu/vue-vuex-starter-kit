@@ -1,3 +1,5 @@
+const helpers = require('./helpers');
+
 const ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
@@ -12,5 +14,7 @@ module.exports = {
     __DEV__: ENV === 'development',
     __PROD__: ENV === 'production',
     __TEST__: ENV === 'test'
-  }
+  },
+  outDir: helpers('dist'),
+  publicPath: ENV === 'production' ? '/' : '/'
 }

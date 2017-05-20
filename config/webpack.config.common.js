@@ -18,7 +18,6 @@ const DefinePlugin = require('webpack/lib/DefinePlugin')
 // const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AssetsWebpackPlugin = require('assets-webpack-plugin')
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
 
 module.exports = {

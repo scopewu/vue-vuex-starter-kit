@@ -3,6 +3,7 @@ const helpers = require('./helpers')
 const WebpackMerge = require('webpack-merge')
 const webpackCommonConfig = require('./webpack.config.common')
 const debug = require('debug')('app:webpack')
+const config = require('./project.config')
 
 debug('Start the production config')
 
@@ -14,12 +15,13 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
 const OptimizeJsPlugin = require('optimize-js-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
   output: {
-    path: helpers('dist'),
-    publicPath: '/',
+    path: config.outDir,
+    publicPath: config.publicPath,
     filename: '[name].[chunkhash].js',
     sourceMapFilename: '[file].map',
     chunkFilename: '[name].[chunkhash].chunk.js'
@@ -86,6 +88,12 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     new OptimizeJsPlugin({
       sourceMap: false
     }),
+    new CopyWebpackPlugin([
+      {
+        from: helpers('public'),
+        to: config.outDir
+      }
+    ]),
     new LoaderOptionsPlugin({
       minimize: true,
       debug: false,
