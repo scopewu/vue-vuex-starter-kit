@@ -53,10 +53,6 @@ module.exports = {
           }
         ],
         include: [helpers('src')]
-      },
-      {
-        test: /\.json$/,
-        use: 'json-loader'
       }
     ].concat(styleLoaders({sourceMap: __DEV__, extract: __PROD__}))
   },
