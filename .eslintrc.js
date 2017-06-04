@@ -37,7 +37,7 @@ module.exports = {
     'no-debugger': isProd ? ERROR : OFF,
     // see: http://eslint.org/docs/rules/space-before-function-paren
     'space-before-function-paren': [ERROR, {'anonymous': 'always', 'named': 'never', 'asyncArrow': 'always'}],
-    'consistent-return': [ERROR, {'treatUndefinedAsUnspecified': true}],
+    // 'consistent-return': [ERROR, {'treatUndefinedAsUnspecified': true}],
     // see: http://eslint.org/docs/rules/no-await-in-loop
     'no-await-in-loop': ERROR,
     // use let or const instead
