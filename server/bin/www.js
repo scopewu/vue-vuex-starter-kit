@@ -7,8 +7,7 @@
 const app = require('../app')
 const debug = require('debug')('app:server')
 const http = require('http')
-const helpers = require('../../config/helpers')
-const config = require(helpers('config/project.config'))
+const config = require('../../config/project.config')
 
 /**
  * Get port from environment and store in Express.
