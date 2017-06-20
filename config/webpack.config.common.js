@@ -1,4 +1,3 @@
-// const Webpack = require('webpack');
 const helpers = require('./helpers')
 const config = require('./project.config')
 const debug = require('debug')('app:webpack')
@@ -11,14 +10,12 @@ debug('webpack start.')
 /*
  * webpack plugins
  * **/
-// const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin')
-// const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
-// const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AssetsWebpackPlugin = require('assets-webpack-plugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
+const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin')
 
 module.exports = {
   entry: {
@@ -68,6 +65,7 @@ module.exports = {
   plugins: [
     new DefinePlugin(config.globals),
     new ProgressPlugin(),
+    new ModuleConcatenationPlugin(),
     new AssetsWebpackPlugin({
       path: helpers('dist'),
       filename: 'webpack-assets.json',
@@ -77,6 +75,7 @@ module.exports = {
       template: helpers('src/index.html'),
       favicon: helpers('public/favicon.ico'),
       inject: 'body',
+      chunksSortMode: 'dependency',
       minify: {
         collapseWhitespace: __PROD__
       }
