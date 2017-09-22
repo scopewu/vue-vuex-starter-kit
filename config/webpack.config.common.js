@@ -19,7 +19,6 @@ const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenat
 
 module.exports = {
   entry: {
-    polyfills: helpers('src/polyfills'),
     main: helpers('src/main')
   },
   module: {
@@ -80,10 +79,6 @@ module.exports = {
         collapseWhitespace: __PROD__
       }
     }),
-    new CommonsChunkPlugin({
-      name: 'polyfills',
-      chunks: ['polyfills']
-    }),
     // This enables tree shaking of the vendor modules
     new CommonsChunkPlugin({
       name: 'vendor',
@@ -92,7 +87,8 @@ module.exports = {
     }),
     // Specify the correct order the scripts will be injected in
     new CommonsChunkPlugin({
-      name: ['vendor', 'polyfills']
+      name: 'manifest',
+      minChunks: Infinity
     })
   ]
 }
