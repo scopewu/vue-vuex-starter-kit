@@ -5,15 +5,15 @@
       "useBuiltIns": "usage",
       "targets": {
         "ie": 9
-      }
+      },
+      "shippedProposals": true
     }],
     ["stage-2"]
   ],
   "plugins": [
-    "syntax-dynamic-import",
     ["transform-runtime", {
       "helpers": false,
-      "polyfill": false,
+      "polyfill": true,
       "regenerator": true,
       "moduleName": "babel-runtime"
     }]
