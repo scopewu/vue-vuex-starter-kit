@@ -46,8 +46,11 @@
     },
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        vm.fetchGeographicalData(vm.hostname)
+        // vm.fetchGeographicalData(vm.hostname)
       })
+    },
+    mounted() {
+      this.fetchGeographicalData(this.hostname)
     },
     methods: {
       fetchGeographicalData(hostName = '') {

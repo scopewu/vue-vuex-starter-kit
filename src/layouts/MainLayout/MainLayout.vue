@@ -6,19 +6,20 @@
     <v-header></v-header>
     <div class="vue-views">
       <transition name="fade" mode="out-in">
-        <!--<keep-alive v-if="$route.meta.keepAlive">
+        <!-- used with preserve component state or avoid re-rendering. -->
+        <!-- see: https://vuejs.org/v2/api/#keep-alive -->
+        <keep-alive v-if="$route.meta && $route.meta.keepAlive !== false">
           <router-view></router-view>
         </keep-alive>
-        <router-view v-else></router-view>-->
-        <keep-alive>
+        <router-view v-else></router-view>
+        <!--<keep-alive>
           <router-view></router-view>
-        </keep-alive>
+        </keep-alive>-->
       </transition>
     </div>
   </div>
 </template>
 <script>
-  import '../../style/style.scss'
   // import logo from './assets/vue-logo.png'
 
   // import VHeader from '@/components/VHeader'

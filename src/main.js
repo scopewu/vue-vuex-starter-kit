@@ -1,5 +1,7 @@
 import Vue from 'vue'
 
+import './style/style.scss'
+
 import router from './router'
 import MainLayout from './layouts/MainLayout'
 import store from './store'

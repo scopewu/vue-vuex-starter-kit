@@ -28,7 +28,8 @@ const routes = [
     path: '/geographical-ip',
     component: GeographicalIp,
     meta: {
-      title: 'Geographical Ip'
+      title: 'Geographical Ip',
+      keepAlive: false // set false to re-rendering component state
     }
   },
   {
