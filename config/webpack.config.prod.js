@@ -16,6 +16,7 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
 const OptimizeJsPlugin = require('optimize-js-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
@@ -56,6 +57,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   },
   plugins: [
     new ExtractTextPlugin('[name].[contenthash].css'),
+    new ModuleConcatenationPlugin(),
     /*
      * See: https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
      * **/

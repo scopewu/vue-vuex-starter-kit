@@ -15,7 +15,6 @@ const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AssetsWebpackPlugin = require('assets-webpack-plugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
-const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin')
 
 module.exports = {
   entry: {
@@ -64,7 +63,6 @@ module.exports = {
   plugins: [
     new DefinePlugin(config.globals),
     new ProgressPlugin(),
-    new ModuleConcatenationPlugin(),
     new AssetsWebpackPlugin({
       path: helpers('dist'),
       filename: 'webpack-assets.json',

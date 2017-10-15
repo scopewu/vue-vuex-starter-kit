@@ -15,8 +15,6 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin')
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin')
 const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin')
-// const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin
-// const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'cheap-module-source-map',
@@ -58,31 +56,6 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     new HotModuleReplacementPlugin(),
     new NamedModulesPlugin(),
     new NoEmitOnErrorsPlugin(),
-    /**
-     * see: https://github.com/shlomiassaf/webpack-dll-bundles-plugin
-     */
-    // new DllBundlesPlugin({
-    //   bundles: {
-    //     polyfills: [
-    //       'core-js'
-    //     ],
-    //     vendor: [
-    //       'vue',
-    //       'vue-router',
-    //       'vuex',
-    //       'axios'
-    //     ]
-    //   },
-    //   dllDir: helpers('dll'),
-    //   webpackConfig: WebpackMergeDll(webpackCommonConfig, {
-    //     devtool: 'cheap-module-source-map',
-    //     plugins: []
-    //   })
-    // }),
-    // new AddAssetHtmlPlugin([
-    //   {filepath: helpers(`dll/${DllBundlesPlugin.resolveFile('polyfills')}`)},
-    //   {filepath: helpers(`dll/${DllBundlesPlugin.resolveFile('vendor')}`)}
-    // ]),
     new LoaderOptionsPlugin({
       debug: true,
       options: {}
