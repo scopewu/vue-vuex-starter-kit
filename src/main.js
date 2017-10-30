@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import 'core-js/modules/es6.promise'
 
 import './style/style.scss'
 
