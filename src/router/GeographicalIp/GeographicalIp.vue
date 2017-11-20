@@ -7,7 +7,7 @@
           <div class="search-in">
             <select class="form-control" v-model="hostname">
               <option value="">请选择</option>
-              <option v-for="h in hostnames" :value="h">{{h}}</option>
+              <option v-for="h in hostnames" :value="h" v-once>{{h}}</option>
             </select>
           </div>
           <button type="submit" class="btn btn-default">Search</button>

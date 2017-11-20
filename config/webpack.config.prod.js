@@ -20,6 +20,7 @@ const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenat
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
+  fail: true,
   output: {
     path: config.outDir,
     publicPath: config.publicPath,
