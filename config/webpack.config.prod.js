@@ -14,13 +14,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
-const OptimizeJsPlugin = require('optimize-js-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
-  fail: true,
+  bail: true,
   output: {
     path: config.outDir,
     publicPath: config.publicPath,
@@ -87,9 +86,6 @@ module.exports = WebpackMerge(webpackCommonConfig, {
         join_vars: true,
         negate_iife: false // we need this for lazy v8
       }
-    }),
-    new OptimizeJsPlugin({
-      sourceMap: false
     }),
     new CopyWebpackPlugin([
       {
