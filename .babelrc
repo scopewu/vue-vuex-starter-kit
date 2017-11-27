@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "modules": false,
       "useBuiltIns": "usage",
       "targets": {
@@ -8,14 +8,7 @@
       },
       "shippedProposals": true
     }],
-    ["stage-2"]
+    ["@babel/preset-stage-2"]
   ],
-  "plugins": [
-    ["transform-runtime", {
-      "helpers": false,
-      "polyfill": true,
-      "regenerator": true,
-      "moduleName": "babel-runtime"
-    }]
-  ]
+  "plugins": []
 }
