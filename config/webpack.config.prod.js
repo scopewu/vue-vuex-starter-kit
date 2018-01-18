@@ -12,7 +12,7 @@ debug('Start the production config')
  * **/
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin')
@@ -62,29 +62,16 @@ module.exports = WebpackMerge(webpackCommonConfig, {
      * See: https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
      * **/
     new UglifyJsPlugin({
+      parallel: true,
       sourceMap: true,
-      minimize: true,
-      beautify: false,
-      output: {
-        comments: false
-      },
-      mangle: {
-        screw_ie8: true
-      },
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-        conditionals: true,
-        unused: true,
-        drop_debugger: true,
-        drop_console: false,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-        negate_iife: false // we need this for lazy v8
+      uglifyOptions: {
+        ie8: false,
+        output: {
+          comments: false,
+          beautify: false
+        },
+        mangle: {},
+        compress: true
       }
     }),
     new CopyWebpackPlugin([
