@@ -45,7 +45,6 @@
     "@babel/polyfill": "^7.0.0-beta.32",
     "@babel/preset-env": "^7.0.0-beta.32",
     "@babel/preset-stage-2": "^7.0.0-beta.32",
-    "add-asset-html-webpack-plugin": "^2.0.1",
     "assets-webpack-plugin": "^3.5.1",
     "babel-eslint": "^8.0.2",
     "babel-loader": "^8.0.0-beta.0",
