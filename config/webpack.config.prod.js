@@ -37,7 +37,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
             limit: 2048,
             context: helpers('src'),
             useRelativePath: true,
-            name: 'img/[path][name].[hash:7].[ext]'
+            name: 'img/[name].[hash:7].[ext]'
           }
         }]
       },
@@ -49,7 +49,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
             limit: 2048,
             context: helpers('src'),
             useRelativePath: true,
-            name: 'fonts/[path][name].[hash:7].[ext]'
+            name: 'fonts/[name].[hash:7].[ext]'
           }
         }]
       }
