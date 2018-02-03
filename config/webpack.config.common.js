@@ -44,7 +44,10 @@ module.exports = {
         test: /\.js$/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
           }
         ],
         include: [helpers('src')]

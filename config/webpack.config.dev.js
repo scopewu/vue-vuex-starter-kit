@@ -19,7 +19,7 @@ const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin')
 module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'cheap-module-source-map',
   entry: {
-    main: [helpers('src/main')].concat(['webpack-hot-middleware/client?path=/__webpack_hmr'])
+    main: [helpers('src/main')].concat(['webpack-hot-middleware/client?path=/__webpack_hmr&reload=true'])
   },
   output: {
     path: config.outDir,
