@@ -1,4 +1,4 @@
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('./project.config')
 
 const {__DEV__, __PROD__} = config.globals
@@ -27,9 +27,19 @@ function cssLoaders({sourceMap = false, extract = true}) {
     {
       loader: 'resolve-url-loader'
     },
-    {
-      loader: 'postcss-loader'
-    }
+    /*{
+      loader: 'postcss-loader',
+      options: {
+        sourceMap,
+        plugins: [
+          require('autoprefixer')({
+            add: true,
+            remove: true,
+            browsers: ['last 2 versions']
+          })
+        ]
+      }
+    }*/
   ]
 
   // generate loader string to be used with extract text plugin
@@ -47,10 +57,7 @@ function cssLoaders({sourceMap = false, extract = true}) {
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (extract) {
-      return ExtractTextWebpackPlugin.extract({
-        use: loaders,
-        fallback: 'style-loader'
-      })
+      return [MiniCssExtractPlugin.loader, ...loaders]
     } else {
       return ['style-loader'].concat(loaders)
     }

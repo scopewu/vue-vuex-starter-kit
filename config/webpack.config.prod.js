@@ -10,7 +10,7 @@ debug('Start the production config')
 /*
  * webpack plugins
  * **/
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MinChunkSizePlugin = require('webpack/lib/optimize/MinChunkSizePlugin')
@@ -18,6 +18,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
+  mode: 'production',
   devtool: 'source-map',
   bail: true,
   output: {
@@ -36,8 +37,8 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           options: {
             limit: 2048,
             context: helpers('src'),
-            useRelativePath: true,
-            name: 'img/[name].[hash:7].[ext]'
+            // useRelativePath: true,
+            name: 'media/img/[name].[hash:7].[ext]'
           }
         }]
       },
@@ -48,15 +49,20 @@ module.exports = WebpackMerge(webpackCommonConfig, {
           options: {
             limit: 2048,
             context: helpers('src'),
-            useRelativePath: true,
-            name: 'fonts/[name].[hash:7].[ext]'
+            // useRelativePath: true,
+            name: 'media/fonts/[name].[hash:7].[ext]'
           }
         }]
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].[contenthash].css'),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].[hash:7].css',
+      chunkFilename: '[id].[chunkhash].css'
+    }),
     new ModuleConcatenationPlugin(),
     /*
      * See: https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
