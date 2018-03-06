@@ -10,7 +10,6 @@ debug('webpack start.')
 /*
  * webpack plugins
  * **/
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AssetsWebpackPlugin = require('assets-webpack-plugin')
@@ -80,16 +79,5 @@ module.exports = {
         collapseWhitespace: __PROD__
       }
     }),
-    // This enables tree shaking of the vendor modules
-    new CommonsChunkPlugin({
-      name: 'vendor',
-      chunks: ['main'],
-      minChunks: module => /node_modules/.test(module.resource)
-    }),
-    // Specify the correct order the scripts will be injected in
-    new CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity
-    })
   ]
 }

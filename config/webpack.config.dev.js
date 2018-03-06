@@ -17,7 +17,8 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin')
 const NoEmitOnErrorsPlugin = require('webpack/lib/NoEmitOnErrorsPlugin')
 
 module.exports = WebpackMerge(webpackCommonConfig, {
-  devtool: 'cheap-module-source-map',
+  mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   entry: {
     main: [helpers('src/main')].concat(['webpack-hot-middleware/client?path=/__webpack_hmr&reload=true'])
   },
