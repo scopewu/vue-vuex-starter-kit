@@ -60,7 +60,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].[hash:7].css',
+      filename: '[name].[chunkhash].css',
       chunkFilename: '[id].[chunkhash].css'
     }),
     new ModuleConcatenationPlugin(),
