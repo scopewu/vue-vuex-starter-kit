@@ -4,7 +4,8 @@
       "modules": false,
       "useBuiltIns": "usage",
       "targets": {
-        "ie": 9
+        "ie": 9,
+        "browsers": ["last 5 versions", "safari >= 7", "not ie < 9"]
       },
       "shippedProposals": true
     }],
