@@ -22,14 +22,48 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
   bail: true,
   output: {
-    path: config.outDir,
+    path: config.outDir ,
     publicPath: config.publicPath,
-    filename: '[name].[chunkhash].js',
+    filename: 'media/js/[name].[chunkhash].js',
     sourceMapFilename: '[file].map',
-    chunkFilename: '[name].[chunkhash].chunk.js'
+    chunkFilename: 'media/js/[name].[chunkhash].chunk.js'
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              sourceMap: true
+            }
+          },
+          'postcss-loader',
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              sourceMap: true
+            }
+          },
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
       {
         test: /\.(png|je?pg|gif)([?]?.*)$/,
         use: [{
@@ -60,8 +94,8 @@ module.exports = WebpackMerge(webpackCommonConfig, {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].[chunkhash].css',
-      chunkFilename: '[id].[chunkhash].css'
+      filename: 'media/css/[name].[chunkhash].css',
+      chunkFilename: 'media/css/[id].[chunkhash].css'
     }),
     new ModuleConcatenationPlugin(),
     /*

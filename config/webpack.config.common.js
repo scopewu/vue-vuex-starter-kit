@@ -2,7 +2,6 @@ const helpers = require('./helpers')
 const config = require('./project.config')
 const debug = require('debug')('app:webpack')
 
-const {vueLoaderOptions, styleLoaders} = require('./utils')
 const {__DEV__, __PROD__} = config.globals
 
 debug('webpack start.')
@@ -14,6 +13,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AssetsWebpackPlugin = require('assets-webpack-plugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   entry: {
@@ -35,7 +35,6 @@ module.exports = {
         use: [
           {
             loader: 'vue-loader',
-            options: vueLoaderOptions()
           }
         ]
       },
@@ -51,7 +50,7 @@ module.exports = {
         ],
         include: [helpers('src')]
       }
-    ].concat(styleLoaders({sourceMap: __DEV__, extract: __PROD__}))
+    ]
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -65,6 +64,7 @@ module.exports = {
   plugins: [
     new DefinePlugin(config.globals),
     new ProgressPlugin(),
+    new VueLoaderPlugin(),
     new AssetsWebpackPlugin({
       path: helpers('dist'),
       filename: 'webpack-assets.json',

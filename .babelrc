@@ -9,8 +9,12 @@
       },
       "shippedProposals": true
     }],
-    ["@babel/preset-stage-1"],
-    ["@babel/preset-stage-2"]
+    ["@babel/preset-stage-1", {
+      "decoratorsLegacy": true
+    }],
+    ["@babel/preset-stage-2", {
+      "decoratorsLegacy": true
+    }]
   ],
   "plugins": []
 }
