@@ -22,7 +22,7 @@ module.exports = WebpackMerge(webpackCommonConfig, {
   devtool: 'source-map',
   bail: true,
   output: {
-    path: config.outDir ,
+    path: config.outDir,
     publicPath: config.publicPath,
     filename: 'media/js/[name].[chunkhash].js',
     sourceMapFilename: '[file].map',
@@ -90,6 +90,26 @@ module.exports = WebpackMerge(webpackCommonConfig, {
       }
     ]
   },
+  optimization: {
+    minimizer: [
+      /*
+      * See: https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
+      * **/
+      new UglifyJsPlugin({
+        parallel: true,
+        sourceMap: true,
+        uglifyOptions: {
+          ie8: false,
+          output: {
+            comments: false,
+            beautify: false
+          },
+          mangle: {},
+          compress: true
+        }
+      }),
+    ],
+  },
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -98,22 +118,6 @@ module.exports = WebpackMerge(webpackCommonConfig, {
       chunkFilename: 'media/css/[id].[chunkhash].css'
     }),
     new ModuleConcatenationPlugin(),
-    /*
-     * See: https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
-     * **/
-    new UglifyJsPlugin({
-      parallel: true,
-      sourceMap: true,
-      uglifyOptions: {
-        ie8: false,
-        output: {
-          comments: false,
-          beautify: false
-        },
-        mangle: {},
-        compress: true
-      }
-    }),
     new CopyWebpackPlugin([
       {
         from: helpers('public'),
