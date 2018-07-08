@@ -14,7 +14,6 @@ function cssLoaders({sourceMap = false, extract = true}) {
     {
       loader: 'css-loader',
       options: {
-        minimize: __PROD__,
         sourceMap: sourceMap
       }
     },
